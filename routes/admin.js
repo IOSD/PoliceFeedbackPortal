@@ -82,13 +82,14 @@ router.get('/chart' , isLoggedIn , function(req , res){
                 array[  parseInt(element.rating) - 1 ] = element.count    
             });
 
-            stationdict[station._id] = array.toString()
+            stationdict[station._id] = array
 
 
         })
 
         console.log(stationdict);
         res.render('chart' , {
+            recordsstring : JSON.stringify(stationdict) ,
             records : stationdict ,
             user : req.user
         })
